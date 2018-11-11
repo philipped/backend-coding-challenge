@@ -32,7 +32,7 @@ namespace CitySuggestions.WebAPI.Extensions
 
         public static void ConfigureRepositories(this IServiceCollection services)
         {
-            services.AddScoped<ICityRepository, GeonamesRepository>();
+            services.AddScoped<ICityRepository, GeonamesJSONRepository>();
         }
     }
 }

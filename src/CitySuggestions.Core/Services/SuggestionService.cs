@@ -18,7 +18,7 @@ namespace CitySuggestions.Core.Services
 
         public IList<CitySuggestion> GetSuggestion()
         {
-            var test = _repository.GetAllCities();
+            var cities = _repository.GetAllCities();
 
             return new List<CitySuggestion>
             {
