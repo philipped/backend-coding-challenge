@@ -30,15 +30,15 @@ namespace CitySuggestions.Core.Services
             var allCities = _repository.GetAllCities();
 
             return allCities.Where(c => c.Name.ToSearchableText()
-                                       .Contains(query.ToSearchableText()))
-                                       .Select(c => new CitySuggestion
-                                       {
-                                           City = c,
-                                           Score = _service.GetScore(c, query, latitude, longitude)
-                                       })
-                                       .OrderBy(c => c.City.Name.StartsWith(query) ? 0 : 1)
-                                       .OrderByDescending(c => c.Score)
-                                       .ToList();
+                            .Contains(query.ToSearchableText()))
+                            .Select(c => new CitySuggestion
+                            {
+                                City = c,
+                                Score = _service.GetScore(c, query, latitude, longitude)
+                            })
+                            .OrderBy(c => c.City.Name.StartsWith(query) ? 0 : 1)
+                            .OrderByDescending(c => c.Score)
+                            .ToList();
         }
     }
 }

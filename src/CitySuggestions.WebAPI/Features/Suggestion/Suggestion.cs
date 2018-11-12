@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -19,6 +20,7 @@ namespace CitySuggestions.WebAPI.Features.Suggestion
 
         public class Request : IRequest<Response>
         {
+            [Display(Name = "Search Query")]
             public string Q { get; set; }
             public double? Latitude { get; set; }
             public double? Longitude { get; set; }
