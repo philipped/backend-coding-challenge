@@ -5,6 +5,6 @@ namespace CitySuggestions.Core.Interfaces
 {
     public interface ISuggestionService
     {
-        IList<CitySuggestion> GetSuggestion();
+        IList<CitySuggestion> GetSuggestion(string query, double? latitude, double? longitude);
     }
 }

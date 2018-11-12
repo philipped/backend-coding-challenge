@@ -20,8 +20,8 @@ namespace CitySuggestions.WebAPI.Features.Suggestion
         public class Request : IRequest<Response>
         {
             public string Q { get; set; }
-            public double Latitude { get; set; }
-            public double Longitude { get; set; }
+            public double? Latitude { get; set; }
+            public double? Longitude { get; set; }
         }
 
         public class Response
@@ -42,7 +42,7 @@ namespace CitySuggestions.WebAPI.Features.Suggestion
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var suggestions = _service.GetSuggestion();
+                var suggestions = _service.GetSuggestion(request.Q, request.Latitude, request.Longitude);
 
                 return _mapper.Map<Response>(suggestions);
             }

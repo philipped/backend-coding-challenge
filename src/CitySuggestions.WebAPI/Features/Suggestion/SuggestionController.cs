@@ -19,9 +19,9 @@ namespace CitySuggestions.WebAPI.Features.Suggestion
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery]Suggestion.Request request, CancellationToken cancellationtoken)
+        public async Task<IActionResult> Get([FromQuery]Suggestion.Request request)
         {
-            var response = await _mediator.Send(request, cancellationtoken);
+            var response = await _mediator.Send(request);
 
             // TODO: Retourne status empty lorsqu'il n'y a aucun résultat
 

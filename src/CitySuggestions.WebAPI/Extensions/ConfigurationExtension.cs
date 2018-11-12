@@ -2,10 +2,6 @@
 using CitySuggestions.Core.Services;
 using CitySuggestions.Infrastructure.Data.Geonames;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CitySuggestions.WebAPI.Extensions
 {
@@ -28,6 +24,7 @@ namespace CitySuggestions.WebAPI.Extensions
         public static void ConfigureUseCases(this IServiceCollection services)
         {
             services.AddScoped<ISuggestionService, SuggestionService>();
+            services.AddScoped<IScoreService, ScoreService>();
         }
 
         public static void ConfigureRepositories(this IServiceCollection services)

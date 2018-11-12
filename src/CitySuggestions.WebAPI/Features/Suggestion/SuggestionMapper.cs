@@ -8,7 +8,7 @@ namespace CitySuggestions.WebAPI.Features.Suggestion
     {
         public SuggestionMapper()
         {
-            CreateMap<List<CitySuggestion>, Suggestion.Response>()
+            CreateMap<IList<CitySuggestion>, Suggestion.Response>()
                 .ForMember(dest => dest.Suggestions, opts => opts.MapFrom(src => src));
 
             CreateMap<CitySuggestion, Suggestion.Model>()
