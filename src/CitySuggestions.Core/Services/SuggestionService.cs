@@ -1,11 +1,8 @@
 ﻿using CitySuggestions.Core.Entities;
 using CitySuggestions.Core.Extensions;
 using CitySuggestions.Core.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CitySuggestions.Core.Services
 {

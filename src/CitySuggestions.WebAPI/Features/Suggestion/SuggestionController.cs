@@ -23,8 +23,6 @@ namespace CitySuggestions.WebAPI.Features.Suggestion
         {
             var response = await _mediator.Send(request);
 
-            // TODO: Retourne status empty lorsqu'il n'y a aucun résultat
-
             return Ok(response);
         }
     }

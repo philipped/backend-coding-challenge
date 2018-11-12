@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CitySuggestions.WebAPI.Extensions;
 using CitySuggestions.WebAPI.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CitySuggestions.WebAPI
 {
@@ -29,6 +25,11 @@ namespace CitySuggestions.WebAPI
             {
                 options.Filters.Add(new ValidateModelAttribute());
             }).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>());
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "City Suggestion", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +41,12 @@ namespace CitySuggestions.WebAPI
             }
 
             app.UseCors("CorsPolicy");
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "City Suggestion");
+                c.RoutePrefix = "documentation";
+            });
             app.UseMvc();
         }
     }
