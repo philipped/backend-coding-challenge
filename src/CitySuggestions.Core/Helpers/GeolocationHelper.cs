@@ -18,6 +18,11 @@ namespace CitySuggestions.Core.Helpers
         /// <returns>Distance between the two locations</returns>
         public static double GetDistance(Coordinate firstLocation, Coordinate secondLocation)
         {
+            if (firstLocation.Latitude == secondLocation.Latitude && firstLocation.Longitude == secondLocation.Longitude)
+            {
+                return 0;
+            }
+
             return Math.Acos(
                 Math.Sin(firstLocation.Latitude.ToRadian()) *
                 Math.Sin(secondLocation.Latitude.ToRadian()) +

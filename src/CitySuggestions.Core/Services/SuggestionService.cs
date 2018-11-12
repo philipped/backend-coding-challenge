@@ -17,6 +17,23 @@ namespace CitySuggestions.Core.Services
             _service = service;
         }
 
+        public void temp()
+        {
+            var _city = new City()
+            {
+                Id = 123,
+                Name = "New York City",
+                Country = "USA",
+                State = "NY",
+                Lat = 40.71427,
+                Long = -74.00597
+            };
+            var query = "New York City";
+            double? latitude = 40.71427;
+            double? longitude = -74.00597;
+
+            var result = _service.GetScore(_city, query, latitude, longitude);
+        }
 
         /// <summary>
         /// Get a list of suggested cities based on searched keywords and coordinates
@@ -28,6 +45,8 @@ namespace CitySuggestions.Core.Services
         public IList<CitySuggestion> GetSuggestion(string query, double? latitude, double? longitude)
         {
             var allCities = _repository.GetAllCities();
+
+            temp();
 
             return allCities.Where(c => c.Name.ToSearchableText()
                             .Contains(query.ToSearchableText()))
